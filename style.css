@@ -1,0 +1,152 @@
+@font-face {
+    font-family: 'Work Sans Italic';
+    src: url(/assets/fonts/WorkSans-Italic-VariableFont_wght.ttf)format(truetype);
+}
+
+@font-face {
+    font-family: 'Work Sans';
+    src: url(/assets/fonts/WorkSans-VariableFont_wght.ttf)format(truetype);
+}
+
+:root {
+    --clr-white: hsl(0, 0%, 100%);
+    --clr-light-pink: hsl(275, 100%, 97%);
+    --clr-grayish-purple: hsl(292, 16%, 49%);
+    --clr-dark-purple: hsl(292, 42%, 14%);
+    --clr-highlight: hsl(292, 80%, 54%);
+
+    --ff-base: 'Work Sans';
+    --ff-italic: 'Work Sans Italic';
+    --fw-400: 400;
+    --fw-600: 600;
+    --fw-700: 700;
+}
+
+/*
+    1. Use a more-intuitive box-sizing model.
+*/
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+/*
+    2. Remove default margin
+*/
+* {
+    margin: 0;
+    padding: 0;
+    font: inherit;
+}
+/*
+    Typographic tweaks!
+    3. Add accessible line-height
+    4. Improve text rendering
+*/
+body {
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+/*
+    5. Improve media defaults
+*/
+img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+}
+/*
+    6. Remove built-in form typography styles
+*/
+input, button, textarea, select {
+    font: inherit;
+}
+/*
+    7. Avoid text overflows
+*/
+p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+}
+
+body {
+    font-family: var(--ff-base);
+    color: var(--clr-dark-purple);
+    font-size: 1rem;
+    background-color: var(--clr-light-pink);
+    background-image: url(/assets/images/background-pattern-mobile.svg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    height: 100vh;
+    display: grid;
+    place-content: center;
+}
+
+@media (min-width: 600px) {
+    body {
+        background-image: url(/assets/images/background-pattern-desktop.svg);
+    }
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: var(--fw-700);
+}
+
+.faq {
+    background-color: white;
+    margin: 1.5rem;
+    border-radius: .5rem;
+    padding: 1.5rem;
+    display: grid;
+    gap: 1.5rem;
+}
+
+@media (min-width: 600px) {
+    .faq {
+        width: 36rem;
+    }
+}
+
+.faq__title {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.toggle-icon {
+    aspect-ratio: 1 / 1;
+    height: 2rem;
+}
+
+.faq__question {
+    cursor: pointer;
+}
+
+.question__title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.question__title h3 {
+    font-size: 1rem;
+    font-weight: var(--fw-700);
+    padding-right: 1rem;
+}
+
+.question__title:hover {
+    color: var(--clr-highlight);
+}
+
+.question__answer {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 1s ease;
+}
+
+.question__answer p {
+    font-size: 0.875rem;
+    color: var(--clr-grayish-purple);
+    padding-block: .5rem;
+}
+
+.faq__question.active .question__answer {
+    max-height: 10rem;
+}
